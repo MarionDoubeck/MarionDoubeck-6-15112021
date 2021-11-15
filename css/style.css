@@ -5,6 +5,9 @@ body {
     margin: 0;
 }
 
+a{
+    text-decoration: none;
+}
 
 header {
     display: flex;
@@ -39,12 +42,34 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
-}
-
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 500px;
+    object-fit: cover;
+}
+
+.photographer_section article h2 {
+    color: #D3573C;
+    font-size: 36px;
+    margin: 10px;
+    padding: 0;
+}
+
+.photographer_section article h3 {
+    color: #901C1C;
+    margin: 0;
+    padding: 0;
+}
+
+.photographer_section article h4 {
+    color:black;
+    margin: 0;
+    padding: 0;
+}
+
+.photographer_section article h5 {
+    color: #525252;
+    margin: 0;
+    padding: 0;
 }
