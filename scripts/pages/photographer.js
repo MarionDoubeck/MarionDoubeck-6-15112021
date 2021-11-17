@@ -28,11 +28,21 @@ async function displayHeaderData(photographerData) {
 
 async function displayMedia(photographerMedia,mediaDirectory){
     const mediaContainer=document.querySelector(".media_container");
+    mediaContainer.innerHTML="";
+    var totalLikes=0;
     photographerMedia.forEach(element => {
         const mediaModel = mediaFactory(element,mediaDirectory);
+        element.title=mediaModel.title;
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediaContainer.appendChild(mediaCardDOM);
+        totalLikes+=element.likes;
     });
+    displayTotalLikes(totalLikes);
+    manageLikes(totalLikes,photographerMedia,mediaDirectory);
+}
+
+async function displayLikesAndPrice(price){
+    document.querySelector(".price").innerHTML=price+"€/jour ";
 }
 
 async function initPhotographer() {
@@ -42,13 +52,18 @@ async function initPhotographer() {
     const allPhotographerData = await getPhotographerDataAndMedia(id);
     const photographerData = allPhotographerData[0];
     const photographerMedia = allPhotographerData[1];
-
+    document.getElementById("photographerName").innerHTML=photographerData.name;
     var mediaDirectory=photographerData.name.split(' ');
     mediaDirectory.pop();
     //Affiche les données du photographe
     displayHeaderData(photographerData);
     //Affiche les media du photographe
     displayMedia(photographerMedia,mediaDirectory);
+    //Affiche le cadre du bas
+    displayLikesAndPrice(photographerData.price);
+    //
+    const sortingMenu=document.getElementById("sortingMenu")
+    sortingMenu.addEventListener('change',(e)=>sortPhotographerMedia(e,sortingMenu,photographerMedia,mediaDirectory));
 };
 
 
