@@ -1,4 +1,4 @@
-function imageFactory(data,mediaDirectory){
+function imageFactory(data,mediaDirectory,photographerMedia){
     const {title, image, id, likes, date, price } =data;
     const heart='  <i class="fa-solid fa-heart" id="'+title+'"></i>';
     function getMediaCardDOM(){
@@ -7,7 +7,7 @@ function imageFactory(data,mediaDirectory){
         const display=document.createElement('img');
         const imageAdress="../assets/photographers/"+mediaDirectory+"/"+image;
         display.setAttribute("src",imageAdress);
-        display.addEventListener("click",(e)=>displayCarousel(e,"image",imageAdress));
+        display.addEventListener("click",(e)=>displayCarousel(e,"image",imageAdress,photographerMedia,mediaDirectory));
         media.appendChild(display);
         const titleAndLikes=document.createElement('div');
         titleAndLikes.className="titleAndLikes";
@@ -27,7 +27,7 @@ function imageFactory(data,mediaDirectory){
 
 }
 
-function videoFactory(data,mediaDirectory){
+function videoFactory(data,mediaDirectory,photographerMedia){
     const { video, id, likes, date, price } =data;
     var title=data.video.replaceAll('_',' ');
     title=title.replace('.mp4','');
@@ -40,7 +40,7 @@ function videoFactory(data,mediaDirectory){
         const videoAdress="../assets/photographers/"+mediaDirectory+"/"+video;
         display.src=videoAdress;
         display.autoplay=true;
-        display.addEventListener("click",(e)=>displayCarousel(e,"video",videoAdress));
+        display.addEventListener("click",(e)=>displayCarousel(e,"video",videoAdress,photographerMedia,mediaDirectory));
         media.appendChild(display);
         const titleAndLikes=document.createElement('div');
         titleAndLikes.className="titleAndLikes";
@@ -60,12 +60,12 @@ function videoFactory(data,mediaDirectory){
 
 }
 
-function mediaFactory(data,mediaDirectory) {
+function mediaFactory(data,mediaDirectory,photographerMedia) {
     var mediaType=Object.keys(data)[3];
     if (mediaType=="image"){
-        return imageFactory(data,mediaDirectory);
+        return imageFactory(data,mediaDirectory,photographerMedia);
     }else{
-        return videoFactory(data,mediaDirectory);
+        return videoFactory(data,mediaDirectory,photographerMedia);
     }
 
 }

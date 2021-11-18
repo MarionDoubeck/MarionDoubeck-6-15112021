@@ -51,6 +51,9 @@
 }
 
 /*//////////////MEDIA CONTAINER ////////////////////////*/
+.sort{
+    margin:0 6vw;
+}
 #sortingMenu{
     font-weight: bold;
     color: white;
@@ -139,7 +142,7 @@
 }
 #right-arrow{
     top:50vh;
-    right:5vh;
+    right:10vh;
 }
 #close{
     top:5vh;
@@ -162,6 +165,7 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: scale-down;
+    border-radius: 5px;
 }
 
 

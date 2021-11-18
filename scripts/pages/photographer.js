@@ -31,7 +31,7 @@ async function displayMedia(photographerMedia,mediaDirectory){
     mediaContainer.innerHTML="";
     var totalLikes=0;
     photographerMedia.forEach(element => {
-        const mediaModel = mediaFactory(element,mediaDirectory);
+        const mediaModel = mediaFactory(element,mediaDirectory,photographerMedia);
         element.title=mediaModel.title;
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediaContainer.appendChild(mediaCardDOM);
