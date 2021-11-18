@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/892f98a91b.js" crossorigin="anonymous"></script>
@@ -10,14 +12,14 @@
   </head>
   <body>
     <header>
-      <a href=index.html><img src="assets/images/logo.png" class="logo" /></a>
+      <a href=index.html><img src="assets/images/logo.png" class="logo" alt="lien vers la page principale"/></a>
     </header>
     <main id="main">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
-      <div class="sort">Trier par
-        <select id="sortingMenu">
+      <div class="sort" aria-label="triez les photos par titre, date ou popularité">Trier par
+        <select id="sortingMenu" name="sortingMenu">
           <option value="title" class="sortingMenuOption">Nom</option>
           <option value="date" class="sortingMenuOption">Date</option>
           <option value="likes" class="sortingMenuOption">Popularité</option>
@@ -25,7 +27,7 @@
       </div>
       <div class="media_container">
       </div>
-      <div class="totalLikes">
+      <div class="totalLikes" role="complementary">
           <div class=photographerLikes></div>
           <div class=price></div>
       </div>

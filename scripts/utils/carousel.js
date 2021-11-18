@@ -1,10 +1,10 @@
-function displayCarousel(e,typeOfMedia,mediaAdress,photographerMedia,mediaDirectory){
+function displayCarousel(e,typeOfMedia,mediaAdress,photographerMedia,mediaDirectory,title){
     carousel=document.getElementById("carousel_modal");
     carousel.style.display = "block";
     if (typeOfMedia=="image"){
-        document.querySelector(".carousel_media").innerHTML="<img src="+mediaAdress+">";
+        document.querySelector(".carousel_media").innerHTML="<img src="+mediaAdress+" alt="+title+">";
     }else if(typeOfMedia=="video"){
-        document.querySelector(".carousel_media").innerHTML="<video src="+mediaAdress+" autoplay></video>";
+        document.querySelector(".carousel_media").innerHTML="<video src="+mediaAdress+" autoplay title="+title+"></video>";
     }else{
         console.log("error in display carousel");
     }
@@ -35,16 +35,20 @@ function changeMedia(e,photographerMedia,place,mediaDirectory){ //determine type
     //
     var typeOfMedia="";
     var mediaAdress="";
+    var title="";
     if(Object.keys(photographerMedia[place]).find(key=>key=="image")){
         typeOfMedia="image";
         const image=photographerMedia[place].image;
         mediaAdress="../assets/photographers/"+mediaDirectory+"/"+image;
+        title=photographerMedia[place].title;
     }else if(Object.keys(photographerMedia[place]).find(key=>key=="video")){
         typeOfMedia="video";
         const video=photographerMedia[place].video;
         mediaAdress="../assets/photographers/"+mediaDirectory+"/"+video;
+        title=photographerMedia[place].video.replaceAll('_',' ');
+        title=title.replace('.mp4','');
     }else{
         console.log("problem in changeMedia()");
     }
-    displayCarousel(e,typeOfMedia,mediaAdress,photographerMedia,mediaDirectory);
+    displayCarousel(e,typeOfMedia,mediaAdress,photographerMedia,mediaDirectory,title);
 }

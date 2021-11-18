@@ -1,4 +1,5 @@
 function displayTotalLikes(totalLikes){
+    document.querySelector(".photographerLikes").setAttribute("aria-label","nombre total de likes du photographe");
     document.querySelector(".photographerLikes").innerHTML=totalLikes+'  <i class="fa-solid fa-heart"></i>';
 }
 

@@ -9,12 +9,16 @@ async function getPhotographerDataAndMedia(photographId) {
 async function displayHeaderData(photographerData) {
     const headerSection = document.querySelector(".photograph-header");
     const h2=document.createElement('h2');
+    h2.setAttribute("aria-label","Nom du photographe"+photographerData.name);
     h2.innerHTML=photographerData.name;
     const h3=document.createElement('h3');
+    h3.setAttribute("aria-label","Lieu d'activité du photographe"+photographerData.city+", "+photographerData.country);
     h3.innerHTML=photographerData.city+", "+photographerData.country;
     const h4=document.createElement('h4');
     h4.innerHTML=photographerData.tagline;
+    h4.setAttribute("aria-label","devise du photographe"+photographerData.tagline);
     const img = document.createElement( 'img' );
+    img.setAttribute("alt","portrait du photographe");
     img.setAttribute("src", "../assets/photographers/Photographers ID Photos/"+photographerData.portrait);
 
     const left=document.createElement("div");

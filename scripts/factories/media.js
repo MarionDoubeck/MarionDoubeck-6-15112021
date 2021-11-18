@@ -7,7 +7,8 @@ function imageFactory(data,mediaDirectory,photographerMedia){
         const display=document.createElement('img');
         const imageAdress="../assets/photographers/"+mediaDirectory+"/"+image;
         display.setAttribute("src",imageAdress);
-        display.addEventListener("click",(e)=>displayCarousel(e,"image",imageAdress,photographerMedia,mediaDirectory));
+        display.setAttribute("alt",title);
+        display.addEventListener("click",(e)=>displayCarousel(e,"image",imageAdress,photographerMedia,mediaDirectory,title));
         media.appendChild(display);
         const titleAndLikes=document.createElement('div');
         titleAndLikes.className="titleAndLikes";
@@ -17,6 +18,7 @@ function imageFactory(data,mediaDirectory,photographerMedia){
         titleAndLikes.appendChild(myTitle);
         const myLikes=document.createElement('div');
         myLikes.innerHTML=likes+heart;
+        myLikes.setAttribute("aria-label","nombre de likes");
         titleAndLikes.appendChild(myLikes);
         
         media.appendChild(titleAndLikes);
@@ -40,7 +42,8 @@ function videoFactory(data,mediaDirectory,photographerMedia){
         const videoAdress="../assets/photographers/"+mediaDirectory+"/"+video;
         display.src=videoAdress;
         display.autoplay=true;
-        display.addEventListener("click",(e)=>displayCarousel(e,"video",videoAdress,photographerMedia,mediaDirectory));
+        display.title=title;
+        display.addEventListener("click",(e)=>displayCarousel(e,"video",videoAdress,photographerMedia,mediaDirectory,title));
         media.appendChild(display);
         const titleAndLikes=document.createElement('div');
         titleAndLikes.className="titleAndLikes";
@@ -50,6 +53,7 @@ function videoFactory(data,mediaDirectory,photographerMedia){
         titleAndLikes.appendChild(myTitle);
         const myLikes=document.createElement('div');
         myLikes.innerHTML=likes+heart;
+        myLikes.setAttribute("aria-label","nombre de likes");
         titleAndLikes.appendChild(myLikes);
 
         media.appendChild(titleAndLikes);
