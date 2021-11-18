@@ -65,9 +65,8 @@ async function initPhotographer() {
     displayMedia(photographerMedia,mediaDirectory);
     //Affiche le cadre du bas
     displayLikesAndPrice(photographerData.price);
-    //
-    const sortingMenu=document.getElementById("sortingMenu")
-    sortingMenu.addEventListener('change',(e)=>sortPhotographerMedia(e,sortingMenu,photographerMedia,mediaDirectory));
+    //Menu de selection
+    selectedOption(photographerMedia,mediaDirectory);
 };
 
 
