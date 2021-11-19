@@ -34,8 +34,10 @@ async function displayMedia(photographerMedia,mediaDirectory){
     const mediaContainer=document.querySelector(".media_container");
     mediaContainer.innerHTML="";
     var totalLikes=0;
+    var tabindex=0;
     photographerMedia.forEach(element => {
-        const mediaModel = mediaFactory(element,mediaDirectory,photographerMedia);
+        tabindex+=2;
+        const mediaModel = mediaFactory(element,mediaDirectory,photographerMedia,tabindex);
         element.title=mediaModel.title;
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediaContainer.appendChild(mediaCardDOM);
@@ -70,3 +72,10 @@ async function initPhotographer() {
 };
 
 initPhotographer() 
+
+
+/* mettre un onfocus if img ou video then :
+display.addEventListener('keydown',(e)=>{
+    if(e.keyCode==16){
+        displayCarousel(e,"image",imageAdress,photographerMedia,mediaDirectory,title)
+    }}); */
