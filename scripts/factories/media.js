@@ -5,7 +5,7 @@ function imageFactory(data,mediaDirectory,photographerMedia,tabindex){
         const media=document.createElement('div');
         media.className="media";
         const display=document.createElement('img');
-        const imageAdress="../assets/photographers/"+mediaDirectory+"/"+image;
+        const imageAdress="./../../assets/photographers/"+mediaDirectory+"/"+image;
         display.setAttribute("src",imageAdress);
         display.setAttribute("alt",title);
         display.setAttribute("tabindex",tabindex);
@@ -40,7 +40,7 @@ function videoFactory(data,mediaDirectory,photographerMedia,tabindex){
         const media=document.createElement('div');
         media.className="media";
         const display=document.createElement('video');
-        const videoAdress="../assets/photographers/"+mediaDirectory+"/"+video;
+        const videoAdress="./../../assets/photographers/"+mediaDirectory+"/"+video;
         display.src=videoAdress;
         display.autoplay=true;
         display.title=title;
