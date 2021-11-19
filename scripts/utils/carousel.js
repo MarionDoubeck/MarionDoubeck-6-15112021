@@ -60,12 +60,12 @@ function changeMedia(e,photographerMedia,place,mediaDirectory){
     if(Object.keys(photographerMedia[place]).find(key=>key=="image")){
         typeOfMedia="image";
         const image=photographerMedia[place].image;
-        mediaAdress="../assets/photographers/"+mediaDirectory+"/"+image;
+        mediaAdress="./assets/photographers/"+mediaDirectory+"/"+image;
         title=photographerMedia[place].title;
     }else if(Object.keys(photographerMedia[place]).find(key=>key=="video")){
         typeOfMedia="video";
         const video=photographerMedia[place].video;
-        mediaAdress="../assets/photographers/"+mediaDirectory+"/"+video;
+        mediaAdress="./assets/photographers/"+mediaDirectory+"/"+video;
         title=photographerMedia[place].video.replaceAll('_',' ');
         title=title.replace('.mp4','');
     }else{

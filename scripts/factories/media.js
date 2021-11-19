@@ -57,7 +57,7 @@ function videoFactory(data,mediaDirectory,photographerMedia,tabindex){
         myLikes.innerHTML=likes+heart;
         myLikes.setAttribute("aria-label","nombre de likes");
         titleAndLikes.appendChild(myLikes);
-
+        
         media.appendChild(titleAndLikes);
         return media;
     }
