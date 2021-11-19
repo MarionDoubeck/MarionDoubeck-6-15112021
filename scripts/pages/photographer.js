@@ -19,7 +19,7 @@ async function displayHeaderData(photographerData) {
     h4.setAttribute("aria-label","devise du photographe"+photographerData.tagline);
     const img = document.createElement( 'img' );
     img.setAttribute("alt","portrait du photographe");
-    img.setAttribute("src", "../assets/photographers/Photographers ID Photos/"+photographerData.portrait);
+    img.setAttribute("src", "./assets/photographers/Photographers ID Photos/"+photographerData.portrait);
 
     const left=document.createElement("div");
     headerSection.appendChild(left);
