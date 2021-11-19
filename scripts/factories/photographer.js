@@ -9,7 +9,7 @@ function photographerFactory(data) {
         linkToPhotographerPage.appendChild(article);
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
-        img.setAttribute("alt",`photot de ${name}`);
+        img.setAttribute("alt",`photo de ${name}`);
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         const h3 = document.createElement( 'h3' );
