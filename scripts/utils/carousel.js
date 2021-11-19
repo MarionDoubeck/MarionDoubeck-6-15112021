@@ -21,6 +21,10 @@ function displayCarousel(e,typeOfMedia,mediaAdress,photographerMedia,mediaDirect
     const right=document.getElementById("right-arrow");
     right.innerHTML='<i class="fas fa-chevron-right" aria-label="image suivante"></i>';
     right.addEventListener("click",(e)=>changeMedia(e,photographerMedia,place+1,mediaDirectory));
+    //croix de fermeture
+    const close=document.getElementById("close");
+    close.innerHTML='<i class="fas fa-times" id="close" aria-label="fermer le carousel"></i>';
+    close.addEventListener("click",(e)=>closeCarousel());
     //navigation clavier
     document.addEventListener('keydown',(e)=>{
         if(e.keyCode==27){
