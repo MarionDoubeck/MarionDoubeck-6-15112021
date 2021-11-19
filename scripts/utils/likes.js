@@ -3,7 +3,7 @@ function displayTotalLikes(totalLikes){
     document.querySelector(".photographerLikes").innerHTML=totalLikes+'  <i class="fa-solid fa-heart"></i>';
 }
 
-function manageLikes(totalLikes,photographerMedia,mediaDirectory){
+function manageLikes(totalLikes,photographerMedia,mediaDirectory){ //incrémente les likes au clic sur les coeurs
     const hearts=Array.from(document.getElementsByClassName("fa-heart"));
     hearts.forEach(heart => {
         heart.addEventListener("click",()=>{

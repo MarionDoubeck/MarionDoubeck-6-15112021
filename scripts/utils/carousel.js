@@ -1,5 +1,8 @@
+const carousel=document.getElementById("carousel_modal");
+
 function displayCarousel(e,typeOfMedia,mediaAdress,photographerMedia,mediaDirectory,title){
-    carousel=document.getElementById("carousel_modal");
+    carousel.setAttribute('aria-hidden','false');
+    main.setAttribute('aria-hidden','true');
     carousel.style.display = "block";
     if (typeOfMedia=="image"){
         document.querySelector(".carousel_media").innerHTML="<img src="+mediaAdress+" alt="+title+">";
@@ -9,17 +12,30 @@ function displayCarousel(e,typeOfMedia,mediaAdress,photographerMedia,mediaDirect
         console.log("error in display carousel");
     }
     const media=mediaAdress.split('/')[mediaAdress.split('/').length-1];//récupère le nom du fichier
-    const place=placeInCarousel(photographerMedia,media);
+    const place=placeInCarousel(photographerMedia,media);//récupère l'index du media dans le tableau de media trié
+    //chevron de gauche
     const left=document.getElementById("left-arrow");
-    left.innerHTML='<i class="fas fa-chevron-left"></i>';
+    left.innerHTML='<i class="fas fa-chevron-left" aria-label="image précédente"></i>';
     left.addEventListener("click",(e)=>changeMedia(e,photographerMedia,place-1,mediaDirectory));
+    //chevron de droite
     const right=document.getElementById("right-arrow");
-    right.innerHTML='<i class="fas fa-chevron-right"></i>';
+    right.innerHTML='<i class="fas fa-chevron-right" aria-label="image suivante"></i>';
     right.addEventListener("click",(e)=>changeMedia(e,photographerMedia,place+1,mediaDirectory));
+    //navigation clavier
+    document.addEventListener('keydown',(e)=>{
+        if(e.keyCode==27){
+            closeCarousel()
+        }else if (e.keyCode==37){
+            changeMedia(e,photographerMedia,place-1,mediaDirectory)
+        }else if (e.keyCode==39){
+            changeMedia(e,photographerMedia,place+1,mediaDirectory)
+        }
+    })
 }
 
 function closeCarousel(){
-    carousel=document.getElementById("carousel_modal");
+    carousel.setAttribute('aria-hidden','true');
+    main.setAttribute('aria-hidden','false');
     carousel.style.display = "none";
     document.querySelector(".carousel_media").innerHTML="";
 }
@@ -28,14 +44,15 @@ function placeInCarousel(photographerMedia,media){
     return photographerMedia.findIndex(object=>object.image==media||object.video==media);
 }
 
-function changeMedia(e,photographerMedia,place,mediaDirectory){ //determine typeOfMedia et mediaAdress
+function changeMedia(e,photographerMedia,place,mediaDirectory){ 
     //faire un carousel infini
     if (place<0){place=photographerMedia.length-1}
     else if (place>photographerMedia.length-1){place=0};
-    //
+    //déclaration des variables 
     var typeOfMedia="";
     var mediaAdress="";
     var title="";
+    //determine typeOfMedia et mediaAdress du media à afficher
     if(Object.keys(photographerMedia[place]).find(key=>key=="image")){
         typeOfMedia="image";
         const image=photographerMedia[place].image;

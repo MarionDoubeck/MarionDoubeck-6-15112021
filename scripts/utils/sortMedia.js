@@ -1,5 +1,21 @@
-function sortPhotographerMedia(selectedProperty,photographerMedia,mediaDirectory){
-    console.log(selectedProperty);
+function selectedOption(photographerMedia,mediaDirectory){ //écoute le clic sur une option et définit la propriété (option) sélectionnée
+    const options=document.querySelectorAll(".option");
+    var selectedProperty="";
+    options.forEach(option=>{
+        option.addEventListener("click",(e)=>{
+            selectedProperty=option.textContent;
+            if(!Array.from(option.classList).find(c=>c=='selected')){
+                const temp=document.querySelector(".selected").textContent;
+                document.querySelector(".selected").innerHTML=selectedProperty;
+                option.innerHTML=temp;
+            }
+        sortPhotographerMedia(selectedProperty,photographerMedia,mediaDirectory)
+        });
+    });
+}
+    
+
+function sortPhotographerMedia(selectedProperty,photographerMedia,mediaDirectory){ //affiche les media triés
     var sortedMedia=[];
     var media=[];
     const l=photographerMedia.length;
@@ -59,19 +75,4 @@ function sortPhotographerMedia(selectedProperty,photographerMedia,mediaDirectory
     }
 }
 
-function selectedOption(photographerMedia,mediaDirectory){
-    const options=document.querySelectorAll(".option");
-    var selectedProperty="";
-    options.forEach(option=>{
-        option.addEventListener("click",(e)=>{
-            if(!Array.from(option.classList).find(c=>c=='selected')){
-                const temp=document.querySelector(".selected").textContent;
-                selectedProperty=option.textContent;
-                document.querySelector(".selected").innerHTML=selectedProperty;
-                option.innerHTML=temp;
-            }
-        sortPhotographerMedia(selectedProperty,photographerMedia,mediaDirectory)
-        });
-    });
-}
-    
+

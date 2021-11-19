@@ -69,5 +69,4 @@ async function initPhotographer() {
     selectedOption(photographerMedia,mediaDirectory);
 };
 
-
 initPhotographer() 
