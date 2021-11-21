@@ -4,7 +4,7 @@ function photographerFactory(data) {
 
     function getUserCardDOM() {
         const linkToPhotographerPage=document.createElement('a');
-        linkToPhotographerPage.setAttribute('href',".assets/photographers/photographer.html?photographerId="+id)
+        linkToPhotographerPage.setAttribute('href',".assets/photographers/Photographer.html?photographerId="+id)
         const article = document.createElement( 'article' );
         linkToPhotographerPage.appendChild(article);
         const img = document.createElement( 'img' );
