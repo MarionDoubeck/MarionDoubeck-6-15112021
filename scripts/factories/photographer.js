@@ -1,10 +1,10 @@
 function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
-    const picture = `./assets/photographers/photographers ID Photos/${portrait}`;
+    const picture = `./assets/photographers/Photographers ID Photos/${portrait}`;
 
     function getUserCardDOM() {
         const linkToPhotographerPage=document.createElement('a');
-        linkToPhotographerPage.setAttribute('href',".assets/photographers/Photographer.html?photographerId="+id)
+        linkToPhotographerPage.setAttribute('href',"./photographer.html?photographerId="+id)
         const article = document.createElement( 'article' );
         linkToPhotographerPage.appendChild(article);
         const img = document.createElement( 'img' );
