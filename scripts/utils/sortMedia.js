@@ -11,6 +11,13 @@ function selectedOption(photographerMedia,mediaDirectory){ //écoute le clic sur
             }
         sortPhotographerMedia(selectedProperty,photographerMedia,mediaDirectory)
         });
+        document.addEventListener("keyup",(e)=>{
+           // console.log("dans sortMediajs, le focus est sur : ",document.activeElement);
+            if (e.keyCode === 13 && document.activeElement==option) {
+                e.preventDefault();
+                option.click();
+            }
+        });
     });
 }
     

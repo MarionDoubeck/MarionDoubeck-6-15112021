@@ -4,6 +4,7 @@
 #carousel_modal{
     display:none;
 }
+
 /*//////////////PHOTOGRAPH HEADER ////////////////////////*/
 .photograph-header {
     display: flex;
@@ -83,12 +84,14 @@
     display: block;
 }
 
-#sortingMenu:hover .option{
+#sortingMenu:hover .option,
+#sortingMenu:focus .option{
     display: block;
     z-index: 100;
     border-bottom: solid 1px white;
 }
-#sortingMenu:hover .option.last{
+#sortingMenu:hover .option.last,
+#sortingMenu:focus .option.last{
     border-bottom: none;
 }
 /*//////////////MEDIA CONTAINER ////////////////////////*/
@@ -112,6 +115,7 @@
     width: 100%;
     height: 100%;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .media img{
@@ -127,8 +131,12 @@
     flex-wrap: wrap;
 }
 
+.likes{
+    display: flex;
+}
+
 .title,
-.fa-solid{
+.fa-heart{
     color:#901C1C;
 }
 
@@ -220,8 +228,8 @@
     margin: auto;
     position: absolute;
     top:5vh;
-    left:50vh;
-    transform: translateX(-25%);
+    left:50%;
+    transform: translateX(-50%);
 }
 
 .modal header {
@@ -281,4 +289,8 @@ form input {
 
 .message{
     height: 140px;
+}
+
+.off{
+    background-color: gray;
 }

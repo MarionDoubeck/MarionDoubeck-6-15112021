@@ -5,9 +5,9 @@ function displayCarousel(e,typeOfMedia,mediaAdress,photographerMedia,mediaDirect
     main.setAttribute('aria-hidden','true');
     carousel.style.display = "block";
     if (typeOfMedia=="image"){
-        document.querySelector(".carousel_media").innerHTML="<img src="+mediaAdress+" alt="+title+">";
+        document.querySelector(".carousel_media").innerHTML="<img src="+mediaAdress+" alt="+title+" tabindex='0'>";
     }else if(typeOfMedia=="video"){
-        document.querySelector(".carousel_media").innerHTML="<video src="+mediaAdress+" autoplay title="+title+"></video>";
+        document.querySelector(".carousel_media").innerHTML="<video src="+mediaAdress+" autoplay title="+title+" tabindex='0'></video>";
     }else{
         console.log("error in display carousel");
     }
@@ -15,23 +15,24 @@ function displayCarousel(e,typeOfMedia,mediaAdress,photographerMedia,mediaDirect
     const place=placeInCarousel(photographerMedia,media);//récupère l'index du media dans le tableau de media trié
     //chevron de gauche
     const left=document.getElementById("left-arrow");
-    left.innerHTML='<i class="fas fa-chevron-left" aria-label="image précédente"></i>';
+    left.innerHTML='<i class="fas fa-chevron-left" aria-label="image précédente" tabindex="0"></i>';
     left.addEventListener("click",(e)=>changeMedia(e,photographerMedia,place-1,mediaDirectory));
     //chevron de droite
     const right=document.getElementById("right-arrow");
-    right.innerHTML='<i class="fas fa-chevron-right" aria-label="image suivante"></i>';
+    right.innerHTML='<i class="fas fa-chevron-right" aria-label="image suivante" tabindex="0"></i>';
     right.addEventListener("click",(e)=>changeMedia(e,photographerMedia,place+1,mediaDirectory));
     //croix de fermeture
     const close=document.getElementById("close");
-    close.innerHTML='<i class="fas fa-times" id="close" aria-label="fermer le carousel"></i>';
+    close.innerHTML='<i class="fas fa-times" id="close" aria-label="fermer le carousel" tabindex="0"></i>';
     close.addEventListener("click",(e)=>closeCarousel());
     //navigation clavier
+    adaCompliant(carousel);
     document.addEventListener('keydown',(e)=>{
-        if(e.keyCode==27){
+        if(e.keyCode==27 && carousel.getAttribute('aria-hidden')=='false'){
             closeCarousel()
-        }else if (e.keyCode==37){
+        }else if (e.keyCode==37 && carousel.getAttribute('aria-hidden')=='false'){
             changeMedia(e,photographerMedia,place-1,mediaDirectory)
-        }else if (e.keyCode==39){
+        }else if (e.keyCode==39 && carousel.getAttribute('aria-hidden')=='false'){
             changeMedia(e,photographerMedia,place+1,mediaDirectory)
         }
     })

@@ -34,15 +34,41 @@ async function displayMedia(photographerMedia,mediaDirectory){
     const mediaContainer=document.querySelector(".media_container");
     mediaContainer.innerHTML="";
     var totalLikes=0;
-    var tabindex=0;
+    var mediaCardHtml="";
     photographerMedia.forEach(element => {
-        tabindex+=2;
-        const mediaModel = mediaFactory(element,mediaDirectory,photographerMedia,tabindex);
+        const mediaModel = mediaFactory(element,mediaDirectory,photographerMedia,mediaCardHtml);
         element.title=mediaModel.title;
-        const mediaCardDOM = mediaModel.getMediaCardDOM();
-        mediaContainer.appendChild(mediaCardDOM);
+        mediaCardHtml = mediaModel.getMediaCardDOM();
         totalLikes+=element.likes;
     });
+    mediaContainer.innerHTML=mediaCardHtml;
+    //ouverture du carousel
+    const allMedia=(Array.from(document.getElementsByClassName("media")));
+    allMedia.forEach(media=>{
+        const title=Array.from(media.children)[0].getAttribute('alt');
+        if (media.classList.value=="media image"){
+            const imageAdress=Array.from(media.children)[0].getAttribute('src');
+            media.children[0].addEventListener("click",(e)=>displayCarousel(e,"image",imageAdress,photographerMedia,mediaDirectory,title));
+            media.children[0].addEventListener("keyup", (e)=>{
+                if (e.keyCode === 13) {
+                 e.preventDefault();
+                 media.children[0].click();
+                }
+              });
+        }else if(media.classList.value=="media vid"){
+            const videoAdress=Array.from(media.children)[0].getAttribute('src');
+            media.children[0].addEventListener("click",(e)=>displayCarousel(e,"video",videoAdress,photographerMedia,mediaDirectory,title));
+            media.children[0].addEventListener("keyup", (e)=>{
+                if (e.keyCode === 13) {
+                 e.preventDefault();
+                 media.children[0].click();
+                }
+              });
+        }else{
+            null;
+        }
+    });
+    //gestion des likes
     displayTotalLikes(totalLikes);
     manageLikes(totalLikes,photographerMedia,mediaDirectory);
 }
@@ -68,14 +94,8 @@ async function initPhotographer() {
     //Affiche le cadre du bas
     displayLikesAndPrice(photographerData.price);
     //Menu de selection
+    adaMenu();
     selectedOption(photographerMedia,mediaDirectory);
 };
 
 initPhotographer() 
-
-
-/* mettre un onfocus if img ou video then :
-display.addEventListener('keydown',(e)=>{
-    if(e.keyCode==16){
-        displayCarousel(e,"image",imageAdress,photographerMedia,mediaDirectory,title)
-    }}); */
