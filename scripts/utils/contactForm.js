@@ -19,7 +19,7 @@ function displayModal() {
             console.log(document.getElementById('firstName').value);
             console.log(document.getElementById('familyName').value);
             console.log(document.getElementById('email').value);
-            console.log(document.querySelector('.message').value);
+            console.log(document.getElementById('message').value);
             closeModal();
         }else{
             e.preventDefault();
