@@ -197,6 +197,7 @@ a:visited{
     width: 100vw;
     background: white;
     color: #901C1C;
+    z-index: 100;
 }
 #carousel_modal .fas,
 #carousel_modal div{
@@ -253,6 +254,7 @@ a:visited{
     top:5vh;
     left:50%;
     transform: translateX(-50%);
+    z-index: 100;
 }
 
 .modal header {
