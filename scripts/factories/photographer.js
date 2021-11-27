@@ -2,7 +2,7 @@ function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
     const picture = `./assets/photographers/Photographers ID Photos/${portrait}`;
 
-    function getUserCardDOM() {
+    function getUserCardDOM() { //créer l'article HTML du photographe
         const linkToPhotographerPage=document.createElement('a');
         linkToPhotographerPage.setAttribute('href',"./photographer.html?photographerId="+id)
         const article = document.createElement( 'article' );

@@ -1,4 +1,4 @@
-function selectedOption(photographerMedia,mediaDirectory){ //écoute le clic sur une option et définit la propriété (option) sélectionnée
+function selectedOption(photographerMedia,mediaDirectory){ //écoute le clic sur une option et définit la propriété (l'option) sélectionnée
     const options=document.querySelectorAll(".option");
     var selectedProperty="";
     options.forEach(option=>{
@@ -11,8 +11,8 @@ function selectedOption(photographerMedia,mediaDirectory){ //écoute le clic sur
             }
         sortPhotographerMedia(selectedProperty,photographerMedia,mediaDirectory)
         });
+        //au clavier :
         document.addEventListener("keyup",(e)=>{
-           // console.log("dans sortMediajs, le focus est sur : ",document.activeElement);
             if (e.keyCode === 13 && document.activeElement==option) {
                 e.preventDefault();
                 option.click();
@@ -29,13 +29,13 @@ function sortPhotographerMedia(selectedProperty,photographerMedia,mediaDirectory
         for (let i=0;i<l;i++){
             media.push(photographerMedia[i]);
         }
-    ///tri par ordre croissant des likes : ///
+    ///tri par ordre décroissant des likes : ///
     if (selectedProperty=="Popularité"){
         var allLikes=[];
         for (let i=0; i<l; i++ ){
             allLikes.push(media[i].likes)
         }
-        allLikes.sort(function(a,b){return a-b});
+        allLikes.sort(function(a,b){return b-a});
         for (let i=0; i<l; i++ ){
             for (let j=0; j<l ; j++){
                 if (media[j].likes==allLikes[i]){
@@ -82,4 +82,44 @@ function sortPhotographerMedia(selectedProperty,photographerMedia,mediaDirectory
     }
 }
 
+function openCloseMenu(){
+    const openMenuButton=document.getElementById("openMenuButton");
+    openMenuButton.addEventListener('click',(e)=>{
+        const opened=document.getElementById("option1").tabIndex;
+        switch (opened){
+            case -1:
+                openMenu();
+                break;
+            case 0:
+                closeMenu();
+                break;
+        }
+    })
+}
+
+function openMenu(){
+    const option1=document.getElementById("option1");
+    const option2=document.getElementById("option2");
+    const option3=document.getElementById("option3");
+    option1.tabIndex=0;
+    option2.tabIndex=0;
+    option3.tabIndex=0;
+    option1.classList.add("menuOpened");
+    option2.classList.add("menuOpened");
+    option3.classList.add("menuOpened");
+    openMenuButton.classList.add("reverse");
+}
+
+function closeMenu(){
+    const option1=document.getElementById("option1");
+    const option2=document.getElementById("option2");
+    const option3=document.getElementById("option3");
+    option1.tabIndex=-1;
+    option2.tabIndex=-1;
+    option3.tabIndex=-1;
+    option1.classList.remove("menuOpened");
+    option2.classList.remove("menuOpened");
+    option3.classList.remove("menuOpened");
+    openMenuButton.classList.remove("reverse");
+}
 

@@ -6,7 +6,7 @@ async function getPhotographerDataAndMedia(photographId) {
     return [photographerData,photographerMedia];
 }
 
-async function displayHeaderData(photographerData) {
+async function displayHeaderData(photographerData) { //affiche le cadre des infos du photographe
     const headerSection = document.querySelector(".photograph-header");
     const h2=document.createElement('h2');
     h2.setAttribute("aria-label","Nom du photographe"+photographerData.name);
@@ -30,7 +30,7 @@ async function displayHeaderData(photographerData) {
     headerSection.appendChild(img);
 }; 
 
-async function displayMedia(photographerMedia,mediaDirectory){
+async function displayMedia(photographerMedia,mediaDirectory){ //affiche tous les media du photographe
     const mediaContainer=document.querySelector(".media_container");
     mediaContainer.innerHTML="";
     var totalLikes=0;
@@ -79,7 +79,7 @@ async function displayLikesAndPrice(price){
 
 async function initPhotographer() {
     //récupère l'ID du photographe
-    const id=window.location.href.split("=")[1];
+    const id=window.location.href.split("=")[1].split("#")[0];//parfois un # se rajoute à la fin de l'adresse en tappant entrer
     // Récupère les datas des photographes
     const allPhotographerData = await getPhotographerDataAndMedia(id);
     const photographerData = allPhotographerData[0];
@@ -94,6 +94,7 @@ async function initPhotographer() {
     //Affiche le cadre du bas
     displayLikesAndPrice(photographerData.price);
     //Menu de selection
+    openCloseMenu();
     adaMenu();
     selectedOption(photographerMedia,mediaDirectory);
 };

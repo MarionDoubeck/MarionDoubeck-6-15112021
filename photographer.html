@@ -21,10 +21,12 @@
 
 
       <div class="sort" aria-label="triez les photos par titre, date ou popularité">Trier par
-        <container id="sortingMenu" aria-haspopup="true"  role="menu" tabindex="0">
-          <div class="option selected">Nom</div>
-          <div class="option">Date</div>
-          <div class="option last">Popularité</div>
+        <container id="sortingMenu" aria-haspopup="true"  aria-expanded="false"
+        aria-label="Tirez par" tabindex="0">
+          <button id="openMenuButton" class="chevron-icon fas fa-chevron-down" aria-label="cliquez pour ouvrir le menu"></button>
+          <span class="option selected" id="option1" tabindex="-1">Nom</span>
+          <span class="option" id="option2" tabindex="-1">Date</span>
+          <span class="option last" id="option3" tabindex="-1">Popularité</span>
         </container>
       </div>
 

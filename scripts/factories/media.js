@@ -4,7 +4,7 @@ function imageFactory(data,mediaDirectory,photographerMedia,mediaCardHtml){
     if (heartColor==undefined){
         heartColor="far fa-heart";
     };
-    function getMediaCardDOM(){
+    function getMediaCardDOM(){ //créer la carte HTML pour l'affichage de l'image, de son titre et de ses likes
         mediaCardHtml+=`
         <div class="media image">
             <img src="./assets/photographers/${mediaDirectory}/${image}" alt="${title}" tabindex="0">
@@ -27,12 +27,11 @@ function videoFactory(data,mediaDirectory,photographerMedia,mediaCardHtml){
     var title=data.video.replaceAll('_',' ');
     title=title.replace('.mp4','');
     data.title=title;
-    //alt="${title}"
     heartColor=data.liked;
     if (heartColor==undefined){
         heartColor="far fa-heart";
     };
-    function getMediaCardDOM(){
+    function getMediaCardDOM(){ //créer la carte HTML pour l'affichage de la vidéo, de son titre et de ses likes
         mediaCardHtml+=`
         <div class="media vid">
             <video src="./assets/photographers/${mediaDirectory}/${video}" autoplay title="${title}" tabindex="0">

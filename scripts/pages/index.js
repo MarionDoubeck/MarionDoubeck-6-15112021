@@ -1,10 +1,10 @@
-async function getPhotographers() {        
+async function getPhotographers() { //lit le fichier json pour en récupérer les données
     const myJsonData=await loadJsonData();
     const photographers=myJsonData.photographers;
     return photographers;
 }
 
-async function displayData(photographers) {
+async function displayData(photographers) { //affiche les photographes
     const photographersSection = document.querySelector(".photographer_section");
     photographers.forEach((photographer) => {
         const photographerModel = photographerFactory(photographer);

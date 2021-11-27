@@ -1,6 +1,12 @@
-# Base de code du projet P6 - Parcours Front-end
+# Base de code du projet P6 - Parcours Front-end - Openclassrooms
 
-## Démarrer le projet
+Créez un site accessible pour une plateforme de photographes
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
+Compétences évaluées
+Développer une application web modulaire avec des design patterns
+Assurer l'accessibilité d'un site web
+Ecrire du code JavaScript maintenable
+Gérer les évènements d'un site avec JavaScript
+
+Marion Doubeck novembre 2021
 

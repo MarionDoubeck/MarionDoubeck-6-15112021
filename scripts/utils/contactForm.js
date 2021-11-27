@@ -8,8 +8,9 @@ function displayModal() {
 	modal.style.display = "block";
     main.setAttribute('aria-hidden','true');
     modal.setAttribute('aria-hidden','false');
-    adaCompliant(modal);
+    adaCompliant(modal);//navigation au clavier
     const submitBtn=document.getElementById("send");
+    // au clic sur "envoyer" on n'envoie que sil n'y a pas d'erreur dans les champs (all errors=0)
     submitBtn.addEventListener("click",(e)=>{
         var errorFirstName=firstNameError(firstName.value);
         var errorFamilyName=familyNameError(familyName.value);
@@ -26,6 +27,7 @@ function displayModal() {
             return
         }
     });
+    //"envoyer" clicable au clavier
     submitBtn.addEventListener("keyup", (e)=>{
         if (e.keyCode === 13) {
             e.preventDefault();
