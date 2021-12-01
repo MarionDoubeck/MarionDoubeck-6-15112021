@@ -10,7 +10,6 @@ function manageLikes(totalLikes,photographerMedia,mediaDirectory){
     hearts.forEach(heart => {
         heart.addEventListener("click",()=>{
             var mediaLikes=heart.parentElement.previousElementSibling.textContent;
-            console.log(mediaLikes);
             mediaLikes=parseInt(mediaLikes,10);
             mediaLikes++;//ajoute un like sur le média
             totalLikes++;//ajoute un like au nombre total de like du photographe
