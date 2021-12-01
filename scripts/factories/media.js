@@ -38,8 +38,9 @@ function videoFactory(data,mediaDirectory,photographerMedia,mediaCardHtml){
             </video>
             <div class="titleAndLikes">
                 <div class="title">${title}</div>
-                <div aria-label="nombre de likes">
-                    ${likes}  <i class="${heartColor} fa-heart" id="${title}" tabindex="0"></i>
+                <div class="likes">
+                    <div aria-label="nombre de likes" tabindex="0">${likes}</div>
+                    <div aria-label="cliquez pour liker"><i class="${heartColor} fa-heart" id="${title}" tabindex="0"></i></div> 
                 </div>
             </div>
         </div>
